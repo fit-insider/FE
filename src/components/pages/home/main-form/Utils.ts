@@ -31,6 +31,16 @@ const getCheckedItemValue = (values) => {
   }
 }
 
+const getCheckedValues = (values) => {
+  const checkedValues = [];
+  for (const [key, value] of Object.entries(values)) {
+    if (value['type'] === 'checkbox' && value['checked'] === true) {
+      checkedValues.push(key);
+    }
+  }
+  return checkedValues;
+}
+
 export const mapFormDataToRequest =  (data) : CreateMealRequestModel => {
   const apiData = {
     userId: '',
@@ -47,6 +57,7 @@ export const mapFormDataToRequest =  (data) : CreateMealRequestModel => {
     sleep: 0,
     waterIntake: 0,
     mealplanType: '',
+    excludedFoods: [],
     mealsCount: 0,
   };
 
@@ -84,6 +95,9 @@ export const mapFormDataToRequest =  (data) : CreateMealRequestModel => {
         apiData[value['apiKey']] = getCheckedValueId(value);
         break;
       case 'page_9':
+        apiData[value['apiKey']] = getCheckedValues(value);
+        break;
+      case 'page_10':
         apiData[value['apiKey']] = getCheckedItemValue(value);
         break;
     }

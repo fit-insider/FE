@@ -40,7 +40,7 @@ export const MainForm = () => {
         if (field.type === 'checkbox') {
           fieldsFormStateToSet[page.pageId] = {
             ...fieldsFormStateToSet[page.pageId],
-            [field.id]: { checked: false, type: field.type, value: field['value'] }
+            [field.id]: { checked: false, type: field.type, value: field['value'], single: field['single'] }
           };
         }
 
@@ -87,6 +87,17 @@ export const MainForm = () => {
 
       pageFields[fieldId] = { ...pageFields[fieldId], checked: !pageFields[fieldId].checked };
     } else {
+
+      if(!Utils.isNullOrUndefined(pageFields[fieldId].single)) {
+        Object.keys(pageFields).filter(key => key !== fieldId && key !== 'apiKey').forEach(key => {
+          pageFields[key] = { ...pageFields[key], checked: false };
+        });
+      } else {
+        Object.keys(pageFields).filter(key => key !== fieldId && key !== 'apiKey' && !Utils.isNullOrUndefined(pageFields[key].single)).forEach(key => {
+          pageFields[key] = { ...pageFields[key], checked: false };
+        });
+      }
+
       pageFields[fieldId] = { ...pageFields[fieldId], checked: !pageFields[fieldId].checked };
     }
 
@@ -218,7 +229,7 @@ export const MainForm = () => {
                           errorsList={pageFieldsModified === true && fieldErrors[field.id] === true ? [t('INVALID_VALUE')] : []}
                         />);
                     }
-                    if (field.type === 'checkbox') {
+                    if (field.type === 'checkbox' && page.apiKey !== 'excludedFoods') {
                       return <div key={index}>
                         <Checkbox
                           id={field.id}
@@ -235,6 +246,34 @@ export const MainForm = () => {
                           {field.name}
                         </FieldLabel>
                       </div>;
+                    }
+                    if (
+                      field.type === 'checkbox' &&
+                      page.apiKey === 'excludedFoods' &&
+                      !Utils.isNullOrUndefined(formFieldsState['page_8'])
+                    ) {
+                      if (
+                        (formFieldsState['page_8'].general.checked && field.plans.includes('general')) ||
+                        (formFieldsState['page_8'].vegetarian.checked && field.plans.includes('vegetarian')) ||
+                        (formFieldsState['page_8'].vegan.checked && field.plans.includes('vegan'))
+                      ) {
+                        return <div key={index}>
+                          <Checkbox
+                            id={field.id}
+                            name={field.id}
+                            label={field.name}
+                            hidden
+                            onChange={() => { toggleCheckboxField(page, field.id); }}
+                          />
+
+                          <FieldLabel
+                            htmlFor={field.id}
+                            fieldChecked={formFieldsState[page.pageId] && formFieldsState[page.pageId][field.id].checked}
+                          >
+                            {field.name}
+                          </FieldLabel>
+                        </div>;
+                      }
                     }
                   })
                 }
