@@ -17,19 +17,25 @@ import { METRICS } from './MetricTypes';
 import { FieldLabel, MainFormPage, PageControls, PageFields, PageTitle } from './StyledComponents';
 import { useValidation } from './UseValidation';
 import { mapFormDataToRequest } from './Utils';
+import { useHistory } from 'react-router-dom';
+import { MealplanContext } from '../../../context/MealplanContext';
+import LoadingScreen from '../../../shared/overlays/LoadingScreen';
 
 export const MainForm = () => {
   const pages = useMainFormFields();
   const [currentPage, setCurrentPage] = useState(0);
   const [formFieldsState, setFormFieldsState] = useState({});
   const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
-  const { userId } = useContext(UserContext);
-  const { handleApiError } = useApiError();
-  const { validateValue } = useValidation(formFieldsState['metrics']);
   const [fieldErrors, setFieldErrors] = useState({});
   const [pageFieldsModified, setPageFieldsModified] = useState(false);
+  const [showLoadingScreen, setShowLoadingScreen] = useState(false);
+  const { userId } = useContext(UserContext);
+  const history = useHistory();
   const scrollRef = useRef(null);
+  const { handleApiError } = useApiError();
+  const { validateValue } = useValidation(formFieldsState['metrics']);
   const { t } = useTranslation();
+  const { setMealplan } = useContext(MealplanContext);
 
   useEffect(() => {
     const fieldsFormStateToSet = {};
@@ -175,16 +181,20 @@ export const MainForm = () => {
   };
 
   const handleCreateMealSubmit = () => {
+    setShowLoadingScreen(true);
     setSubmitButtonDisabled(true);
     const apiRequestData = mapFormDataToRequest(formFieldsState);
     apiRequestData['userId'] = userId;
     apiService.post<any, CreateMealRequestModel>(ApiEndpoints.createMeal, apiRequestData)
-      .then(() => {
+      .then(({ data }) => {
         setSubmitButtonDisabled(false);
+        setMealplan(data);
+        history.push('/mealplan');
       })
       .catch((error) => {
         handleApiError(error);
         setSubmitButtonDisabled(false);
+        setShowLoadingScreen(false);
       });
   };
 
@@ -294,6 +304,7 @@ export const MainForm = () => {
           </Conditional>)
       }
 
+    <LoadingScreen active={showLoadingScreen} text={t('CREATE_MEALPLAN_LOADING_MESSAGE')}/>
     </CustomForm >
   );
 };

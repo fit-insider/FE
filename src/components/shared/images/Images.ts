@@ -9,7 +9,10 @@ const images = {
   instagram: require('../../../assets/images/instagram_logo.png'),
   messenger: require('../../../assets/images/messenger_logo.png'),
   account: require('../../../assets/images/account2.svg'),
-  settings: require('../../../assets/images/settings.svg')
+  settings: require('../../../assets/images/settings.svg'),
+  arrowLeft: require('../../../assets/images/left-arrow.png'),
+  arrowRight: require('../../../assets/images/right-arrow.png'),
+  info: require('../../../assets/images/info.png')
 };
 
 export default images;

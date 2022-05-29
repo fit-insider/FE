@@ -84,6 +84,7 @@ export const TRANSLATIONS_EN = {
   'MORE_THAN_3_L': 'More than 3L',
   'GENERAL': 'General',
   'VEGETARIAN': 'Vegetarian',
+  'VEGAN': 'Vegan',
   'TWO': 'Two',
   'THREE': 'Three',
   'FOUR': 'Four',
@@ -93,6 +94,36 @@ export const TRANSLATIONS_EN = {
   'NEXT': 'Next',
   'PREVIOUS': 'Previous',
   'CRREATE': 'Create',
-  'INVALID_VALUE': 'Invalid value'
-  
+  'INVALID_VALUE': 'Invalid value',
+
+  'DAILY_NUTRITIONAL_REQUIREMENTS': 'Daily nutritional requirements',
+  'CALORIES': 'Calories',
+  'PROTEIN': 'Protein',
+  'CARBS': 'Carbs',
+  'FAT': 'Fats',
+  'MEAL_TYPES': 'Meal types',
+  'DISH_TYPES': 'Dish types',
+  'CUISINE_TYPES': 'Cuisine types',
+  'CAUTIONS': 'Cautions',
+  'PREVIOUS_DAY': 'Previous day',
+  'NEXT_DAY': 'Next day',
+  'DAY': 'Day',
+
+  'WHAT_DO_YOU_WANT_TO_EXCLUDE_FROM_YOUR_DIET': 'What do you want to exclude from your diet',
+  'NOTHING': 'Nothing',
+  'EGGS': 'Eggs',
+  'FISH': 'Fish',
+  'DAIRY': 'Dairy',
+  'GLUTEN': 'Gluten',
+  'OIL': 'Oil',
+  'PEANUT': 'Peanut',
+  'PORK': 'Pork',
+  'RED_MEAT': 'Red meat',
+  'SESAME': 'Sesame',
+  'SHELLFISH': 'Shellfish',
+  'SOY': 'Soy',
+  'TREE_NUTS': 'Tree nuts',
+  'WHEAT': 'Wheat',
+
+  'CREATE_MEALPLAN_LOADING_MESSAGE': 'Your mealplan is now being created...'
 };

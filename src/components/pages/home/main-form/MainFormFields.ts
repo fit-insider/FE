@@ -116,7 +116,7 @@ const useMainFormFields = () => {
       apiKey: 'excludedFoods',
       pageName: t('WHAT_DO_YOU_WANT_TO_EXCLUDE_FROM_YOUR_DIET'),
       fields: [
-        { id: 'nothing', name: t('NOTHING'), type: 'checkbox', single: true, plans: ['general'], },
+        { id: 'nothing', name: t('NOTHING'), type: 'checkbox', single: true, plans: ['general'] },
         { id: 'egg-free', name: t('EGGS'), type: 'checkbox', plans: ['general', 'vegetarian'] },
         { id: 'fish-free', name: t('FISH'), type: 'checkbox', plans: ['general'] },
         { id: 'dairy-free', name: t('DAIRY'), type: 'checkbox', plans: ['general'] },
@@ -129,7 +129,7 @@ const useMainFormFields = () => {
         { id: 'shellfish-free', name: t('SHELLFISH'), type: 'checkbox', plans: ['general'] },
         { id: 'soy-free', name: t('SOY'), type: 'checkbox', plans: ['general'] },
         { id: 'tree-nut-free', name: t('TREE_NUTS'), type: 'checkbox', plans: ['general'] },
-        { id: 'wheat-free', name: t('WHEAT'), type: 'checkbox', plans: ['general'] },
+        { id: 'wheat-free', name: t('WHEAT'), type: 'checkbox', plans: ['general'] }
       ],
       unique: false
     },

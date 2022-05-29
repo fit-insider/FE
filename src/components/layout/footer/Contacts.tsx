@@ -18,8 +18,8 @@ const Contacts = () => {
       <ContactsHeader>{t('CONTACT_US')}</ContactsHeader>
 
       <CustomForm width={60}>
-        <TextField label={t('NAME')} placeholder={`${t('NAME')}...`} labelColor='light'/>
-        <TextField label={t('EMAIL')} placeholder={`${t('EMAIL')}...`} labelColor='light'/>
+        <TextField error={false} label={t('NAME')} placeholder={`${t('NAME')}...`} labelColor='light'/>
+        <TextField error={false} label={t('EMAIL')} placeholder={`${t('EMAIL')}...`} labelColor='light'/>
         <TextArea label={t('YOUR_MESSAGE')} placeholder={`${t('YOUR_MESSAGE')}...`} labelColor='light'/>
 
         <Button onClick={handleSubmit}>{t('SEND_MESSAGE')}</Button>
