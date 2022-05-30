@@ -1,24 +1,34 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Page from '../../layout/page-wrapper/Page';
 import DailyRequirements from './DailyRequirements';
 import { useTranslation } from 'react-i18next';
 import DailyMealComponent from './DailyMealsComponent';
 import { MealplanContext } from '../../context/MealplanContext';
+import Utils from '../../../utils/Utils';
+import { useHistory } from 'react-router-dom';
+import MealplanInfo from './MealplanInfo';
 
 const MealplanPage = () => {
   const { mealplan } = useContext(MealplanContext);
   const [currentDay, setCurrentDay] = useState(0);
+  const history = useHistory();
   const { t } = useTranslation();
 
+  useEffect(() => {
+    if (Utils.isNullOrUndefined(mealplan)) {
+      history.push('/');
+    }
+  }, [mealplan]);
+
   const prevDay = () => {
-    if(currentDay == 0) {
+    if (currentDay == 0) {
       return;
     }
     setCurrentDay(currentDay - 1);
   };
 
   const nextDay = () => {
-    if(currentDay == 6) {
+    if (currentDay == 6) {
       return;
     }
     setCurrentDay(currentDay + 1);
@@ -27,25 +37,25 @@ const MealplanPage = () => {
   const requirements = [
     {
       name: t('CALORIES'),
-      value: mealplan.calories,
+      value: mealplan?.calories,
       unit: 'kcal',
       color: 'kcal'
     },
     {
       name: t('PROTEIN'),
-      value: mealplan.protein,
+      value: mealplan?.protein,
       unit: 'gr',
       color: 'protein'
     },
     {
       name: t('CARBS'),
-      value: mealplan.carb,
+      value: mealplan?.carb,
       unit: 'gr',
       color: 'carb'
     },
     {
       name: t('FAT'),
-      value: mealplan.fat,
+      value: mealplan?.fat,
       unit: 'gr',
       color: 'fat'
     }
@@ -53,14 +63,20 @@ const MealplanPage = () => {
 
   return (
     <Page>
-      <DailyRequirements requirements={requirements} />
-      <DailyMealComponent 
-        dayTitle={`${t('DAY')} ${currentDay + 1}`}
-        meals={mealplan.dailyMeals[currentDay].meals}
-        currentDay = {currentDay} 
-        prevDay = {prevDay}
-        nextDay = {nextDay}  
-      />
+      {
+        !Utils.isNullOrUndefined(mealplan) &&
+        <>
+          <MealplanInfo mealplan={mealplan}></MealplanInfo>
+          <DailyRequirements requirements={requirements} />
+          <DailyMealComponent
+            dayTitle={`${t('DAY')} ${currentDay + 1}`}
+            meals={mealplan.dailyMeals[currentDay].meals}
+            currentDay={currentDay}
+            prevDay={prevDay}
+            nextDay={nextDay}
+          />
+        </>
+      }
     </Page>
   );
 };

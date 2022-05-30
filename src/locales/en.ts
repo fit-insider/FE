@@ -43,6 +43,7 @@ export const TRANSLATIONS_EN = {
   'LOGIN_HERE': 'Login here',
   'ACCEPT_TERMS_AND_CONDITIONS': 'I agree to the terms and conditions of Fit Insider',
   'WRONG_CREDENTIALS': 'Wrong credentials',
+  'INTERNAL_SERVER_ERROR': 'Internal server error',
 
   'CHOOSE_GENDER': 'Choose your gender',
   'CHOOSE_TARGET': 'Choose your target',
@@ -90,6 +91,12 @@ export const TRANSLATIONS_EN = {
   'FOUR': 'Four',
   'FIVE': 'Five',
   'SIX': 'Six',
+  'MEALPLAN_INFO': 'Mealplan information',
+  'GENDER': 'Gender',
+  'TARGET': 'Target',
+  'HEIGHT': 'Height',
+  'WEIGHT': 'Weight',
+  'MEALS_COUNT': 'Meals number',
 
   'NEXT': 'Next',
   'PREVIOUS': 'Previous',

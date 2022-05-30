@@ -43,6 +43,7 @@ export const TRANSLATIONS_RO = {
   'LOGIN_HERE': 'Conectează-te aici',
   'ACCEPT_TERMS_AND_CONDITIONS': 'Sunt de acord cu termenii și condițiile Fit Insider',
   'WRONG_CREDENTIALS': 'Date autentificare incorecte',
+  'INTERNAL_SERVER_ERROR': 'Internal server error',
 
   'CHOOSE_GENDER': 'Alege sexul',
   'CHOOSE_TARGET': 'Alege scopul',
@@ -90,6 +91,12 @@ export const TRANSLATIONS_RO = {
   'FOUR': 'Patru',
   'FIVE': 'Cinci',
   'SIX': 'Șase',
+  'MEALPLAN_INFO': 'Informații plan alimentar',
+  'GENDER': 'Sex',
+  'TARGET': 'Obiectiv',
+  'HEIGHT': 'Înălțime',
+  'WEIGHT': 'Greutate',
+  'MEALS_COUNT': 'Număr mese',
 
   'NEXT': 'Înainte',
   'PREVIOUS': 'Înapoi',

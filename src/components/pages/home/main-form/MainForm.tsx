@@ -35,7 +35,7 @@ export const MainForm = () => {
   const { handleApiError } = useApiError();
   const { validateValue } = useValidation(formFieldsState['metrics']);
   const { t } = useTranslation();
-  const { setMealplan } = useContext(MealplanContext);
+  const { saveMealplan } = useContext(MealplanContext);
 
   useEffect(() => {
     const fieldsFormStateToSet = {};
@@ -188,7 +188,7 @@ export const MainForm = () => {
     apiService.post<any, CreateMealRequestModel>(ApiEndpoints.createMeal, apiRequestData)
       .then(({ data }) => {
         setSubmitButtonDisabled(false);
-        setMealplan(data);
+        saveMealplan(data);
         history.push('/mealplan');
       })
       .catch((error) => {

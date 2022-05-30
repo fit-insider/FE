@@ -26,6 +26,7 @@
     "react-dom": "^18.0.0",
     "react-i18next": "^11.16.7",
     "react-icons": "^4.3.1",
+    "react-minimal-pie-chart": "^8.3.0",
     "react-router-dom": "5.2.0",
     "react-tooltip": "^4.2.21",
     "styled-components": "^5.3.5",

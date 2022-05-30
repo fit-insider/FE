@@ -11,6 +11,7 @@ import { UserRegisterModel } from './UserRegisterModel';
 import { useHistory } from 'react-router-dom';
 import { useApiError } from '../../hooks/UseApiError';
 import { FormError } from '../../shared/forms/StylesComponents';
+import Utils from '../../../utils/Utils';
 
 const RegisterOptions = () => {
   const { t } = useTranslation();
@@ -62,7 +63,8 @@ const RegisterForm = () => {
         placeholder={`${t('FIRST_NAME')}...`}
         labelColor='dark'
         onType={handleInputChanges}
-        error={errors?.firstname}
+        error={!Utils.isNullOrUndefined(errors?.firstname)}
+        errorsList={errors?.firstname}
       />
 
       <TextField
@@ -71,7 +73,8 @@ const RegisterForm = () => {
         placeholder={`${t('LAST_NAME')}...`}
         labelColor='dark'
         onType={handleInputChanges}
-        error={errors?.lastname}
+        error={!Utils.isNullOrUndefined(errors?.lastname)}
+        errorsList={errors?.lastname}
       />
 
       <TextField
@@ -80,16 +83,19 @@ const RegisterForm = () => {
         placeholder={`${t('EMAIL')}...`}
         labelColor='dark'
         onType={handleInputChanges}
-        error={errors?.email}
+        error={!Utils.isNullOrUndefined(errors?.email)}
+        errorsList={errors?.email}
       />
 
       <TextField
         name='password'
+        type='password'
         label={t('PASSWORD')}
         placeholder={`${t('PASSWORD')}...`}
         labelColor='dark'
         onType={handleInputChanges}
-        error={errors?.password}
+        error={!Utils.isNullOrUndefined(errors?.password)}
+        errorsList={errors?.password}
       />
 
       <RegisterOptions />

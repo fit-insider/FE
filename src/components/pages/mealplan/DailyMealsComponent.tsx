@@ -3,8 +3,9 @@ import { useTranslation } from 'react-i18next';
 import Utils from '../../../utils/Utils';
 import images from '../../shared/images/Images';
 import Conditional from '../../utils/Conditional';
+import DayInfo from './DayInfo';
 import Meal from './Meal';
-import { Control, ControlLabel, DailyMealControls, DailyMeals, DailyMealWrapper, DayTitle, IconImage } from './StyledComponents';
+import { Control, ControlLabel, DailyMealControls, DailyMeals, DailyMealWrapper, DayTitle, DayTitleContainer, IconImage } from './StyledComponents';
 
 const DailyMealComponent = ({ dayTitle, meals, currentDay, prevDay, nextDay }) => {
   const { t } = useTranslation();
@@ -32,7 +33,11 @@ const DailyMealComponent = ({ dayTitle, meals, currentDay, prevDay, nextDay }) =
       </DailyMealControls>
 
 
-      <DayTitle>{dayTitle}</DayTitle>
+      <DayTitleContainer>
+        <DayTitle>{dayTitle}</DayTitle>
+        <DayInfo dayName={dayTitle} meals={meals} />
+      </DayTitleContainer>
+      
 
       <DailyMeals>
         {

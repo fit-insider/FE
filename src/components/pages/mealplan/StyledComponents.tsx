@@ -76,14 +76,37 @@ export const ControlLabel = styled.p`
   margin: 0 4px;
   padding: 0;
   font-size: 18px
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 `;
 
 export const IconImage = styled.img`
   width: 20px;
   height: 30px;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+`;
+
+export const DayTitleContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
 `;
 
 export const DayTitle = styled.p`
+  margin: 0 5px;
+  padding: 0;
   font-size: 20px;
   color: ${colors.white}
 `;
@@ -136,6 +159,11 @@ export const TooltipWrapper = styled.div`
   cursor: pointer;
 `;
 
+export const DayInfoTooltipWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 export const TooltipIcon = styled.img`
   width: 20px;
 `;
@@ -150,4 +178,50 @@ export const NutrientLabel = styled.div<{ color?: string }>`
   font-size: 12px;
   display: flex;
   align-items: center;
+`;
+
+
+// mealplan info
+export const MealplanInfoWrapper = styled.div`
+  width: 60%;
+  margin: 20px auto;
+  padding: 10px;
+  border-radius: 4px;
+  background: ${colors.dark};
+  display: flex;
+  aling-items: center;
+  justify-content: space-evenly;
+`;
+
+export const MealplanInfoLabels = styled.div`
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  aling-items: center;
+  justify-content: space-evenly;
+`;
+
+export const MealplanInfoTitle = styled.p`
+  text-align: center;
+  margin: 5px;
+  color: ${colors.white};
+  font-size: 20px;
+`;
+
+
+export const MealplanInfoLabel = styled.p`
+  text-align: center;
+  margin: 2px;
+  padding: 0;
+  color: ${colors.white};
+  font-size: 16px;
+  font-style: italic;
+`;
+
+export const PieChartContainer = styled.div`
+  width: 35%;
+  display: flex;
+  aling-items: center;
+  justify-content: space-evenly;
+  padding: 20px;
 `;

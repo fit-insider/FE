@@ -11,7 +11,7 @@ const MealInfo = ({ meal }) => {
 
   const cautions = useMemo(() => {
     const cautions = [];
-    meal.dishTypes.forEach(caution => {
+    meal.cautions.forEach(caution => {
       cautions.push(caution.name);
     });
     return Utils.capitalize(cautions.join(', '));

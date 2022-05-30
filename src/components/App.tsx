@@ -13,17 +13,17 @@ import HomePage from './pages/home/Home';
 const App = () => (
   <AppSettingsContextProvider>
     <UserContextProvider>
-      <Router>
-        <Switch>
-          <UnauthenticatedRoute path='/login' component={Login} exact />
-          <UnauthenticatedRoute path='/register' component={Register} exact />
-          <MealplanContextProvider>
+      <MealplanContextProvider>
+        <Router>
+          <Switch>
+            <UnauthenticatedRoute path='/login' component={Login} exact />
+            <UnauthenticatedRoute path='/register' component={Register} exact />
             <Route path='/mealplan' component={MealplanPage} exact />
             <Route path='/' component={HomePage} exact />
             <Redirect to='/' />
-          </MealplanContextProvider>
-        </Switch>
-      </Router>
+          </Switch>
+        </Router>
+      </MealplanContextProvider>
     </UserContextProvider>
   </AppSettingsContextProvider>
 );

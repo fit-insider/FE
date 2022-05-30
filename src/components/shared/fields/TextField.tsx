@@ -7,6 +7,7 @@ import { ErrorLabel, StyledTextField, StyledTextFieldContainer } from './StyledC
 interface TextFieldInterface {
   id?: string
   name?: string
+  type?: string
   value?: string
   label?: string
   placeholder?: string
@@ -18,6 +19,7 @@ interface TextFieldInterface {
 
 const TextField = ({
   id,
+  type = 'text',
   name,
   value,
   label,
@@ -36,7 +38,7 @@ const TextField = ({
       </Conditional>
 
       <StyledTextField
-        type='text'
+        type={type}
         id={id}
         name={name}
         value={value}
@@ -46,7 +48,7 @@ const TextField = ({
       />
 
       <Conditional when={error}>
-        {errorsList?.map((err, index) => <ErrorLabel key={index}>{err}</ErrorLabel>)}
+        {errorsList?.map((err, index) => <ErrorLabel key={index}>{err}<br/></ErrorLabel>)}
       </Conditional>
 
     </StyledTextFieldContainer>

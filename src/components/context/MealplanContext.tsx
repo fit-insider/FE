@@ -1,45 +1,24 @@
 import React, { createContext, useState } from 'react';
-
-interface Meal {
-  id: number,
-  name: string,
-  imageURL: string,
-  cautions: Array<object>
-  dishTypes: Array<object>
-  cuisineTypes: Array<object>
-  mealTypes: Array<object>
-  ingredients: Array<object>
-  nutrients: Array<object>
-}
-
-interface DailyMeal {
-  id: number
-  meals: Array<Meal>
-}
-
-interface Mealplan{
-  userId: number
-  id: number
-  calories: number
-  carb: number
-  fat: number
-  protein: number
-  dailyMeals: Array<DailyMeal>
-}
+import { Mealplan } from '../../interfaces/Mealplan';
 
 interface MealplanContextModel {
   mealplan: Mealplan
-  setMealplan: (value : object) => void
+  saveMealplan: (value : object) => void
 }
 
-export const MealplanContext = createContext<MealplanContextModel>({ mealplan: null, setMealplan: null });
+export const MealplanContext = createContext<MealplanContextModel>({ mealplan: null, saveMealplan: null });
 
 export const MealplanContextProvider = ({ children }) => {
-  const [mealplan, setMealplan] = useState(null);
+  const [mealplan, setMealplan] = useState(JSON.parse(localStorage.getItem('mealplan')));
+
+  const savePlan = (mealplan) => {
+    localStorage.setItem('mealplan', JSON.stringify(mealplan));
+    setMealplan(mealplan);
+  };
 
   const data = {
     mealplan: mealplan,
-    setMealplan: setMealplan
+    saveMealplan: savePlan
   };
 
   return <MealplanContext.Provider value={data}>
