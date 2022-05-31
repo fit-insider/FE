@@ -28,7 +28,7 @@ const MealplanInfo = ({ mealplan }) => {
       <PieChartContainer>
         {
           mealplan && <PieChart
-            labelStyle={{ fontSize: '4px' }}
+            labelStyle={{ fontSize: '6px' }}
             label={({ dataEntry }) => `${dataEntry.title} ${Math.round(dataEntry.percentage)}%`}
             data={[
               { title: t('PROTEIN'), value: (mealplan.protein * 4 * 100 / mealplan.calories), color: colors.protein },

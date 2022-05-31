@@ -132,5 +132,14 @@ export const TRANSLATIONS_RO = {
   'TREE_NUTS': 'Nuci',
   'WHEAT': 'Grâu',
 
-  'CREATE_MEALPLAN_LOADING_MESSAGE': 'Planul tău alimentar se generază acum...'
+  'CREATE_MEALPLAN_LOADING_MESSAGE': 'Planul tău alimentar se generază acum...',
+  'MUST_CHECK_TERMS_AND_CONDITIONS': 'Trebuie să accepți termenii și condițiile Fit Insider',
+  'EDIT_USER_INFORMATION': 'Editează informații',
+  'EDIT': 'Editează',
+  'CHANGE_PASSWORD': 'Schimbă parola',
+  'CURRENT_PASSWORD': 'Parola curentă',
+  'NEW_PASSWORD': 'Parola nouă',
+  'RETYPE_NEW_PASSWORD': 'Reintroduce parola nouă',
+  'OLD_PASSWORD_MUST_MATCH_EXISTING': 'Invalid current password',
+
 };

@@ -9,6 +9,7 @@ import AuthenticatedRoute from './shared/routes/AuthenticatedRoute';
 import MealplanPage from './pages/mealplan/Mealplan';
 import { MealplanContextProvider } from './context/MealplanContext';
 import HomePage from './pages/home/Home';
+import Account from './pages/account/Account';
 
 const App = () => (
   <AppSettingsContextProvider>
@@ -18,6 +19,7 @@ const App = () => (
           <Switch>
             <UnauthenticatedRoute path='/login' component={Login} exact />
             <UnauthenticatedRoute path='/register' component={Register} exact />
+            <AuthenticatedRoute path='/account' component={Account} exact />
             <Route path='/mealplan' component={MealplanPage} exact />
             <Route path='/' component={HomePage} exact />
             <Redirect to='/' />

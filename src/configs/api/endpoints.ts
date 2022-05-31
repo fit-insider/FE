@@ -6,5 +6,8 @@ export const ApiEndpoints = {
   loginUser: '/user/login',
   getUserById: (id: string) => `/user/display/${id}`,
   editUser: (id: string) => `/user/edit/${id}`,
-  createMeal:'/meal/create'
+  changePassword: (id: string) => `/user/change-password/${id}`,
+  createMeal:'/meal/create',
+  getMealplan: (id: string) => `/meal/mealplan/${id}`,
+  getUserMealplans: (id: string) => `/meal/mealplans/${id}`
 };

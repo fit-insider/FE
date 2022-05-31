@@ -70,6 +70,7 @@ const MealplanPage = () => {
           <DailyRequirements requirements={requirements} />
           <DailyMealComponent
             dayTitle={`${t('DAY')} ${currentDay + 1}`}
+            requirements={requirements}
             meals={mealplan.dailyMeals[currentDay].meals}
             currentDay={currentDay}
             prevDay={prevDay}

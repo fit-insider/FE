@@ -7,7 +7,7 @@ import DayInfo from './DayInfo';
 import Meal from './Meal';
 import { Control, ControlLabel, DailyMealControls, DailyMeals, DailyMealWrapper, DayTitle, DayTitleContainer, IconImage } from './StyledComponents';
 
-const DailyMealComponent = ({ dayTitle, meals, currentDay, prevDay, nextDay }) => {
+const DailyMealComponent = ({ dayTitle, meals, requirements, currentDay, prevDay, nextDay }) => {
   const { t } = useTranslation();
   
   return (
@@ -35,7 +35,7 @@ const DailyMealComponent = ({ dayTitle, meals, currentDay, prevDay, nextDay }) =
 
       <DayTitleContainer>
         <DayTitle>{dayTitle}</DayTitle>
-        <DayInfo dayName={dayTitle} meals={meals} />
+        <DayInfo dayName={dayTitle} meals={meals} requirements={requirements} />
       </DayTitleContainer>
       
 

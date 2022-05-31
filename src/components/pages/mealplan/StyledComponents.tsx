@@ -42,11 +42,12 @@ export const DailyMealWrapper = styled.div`
   width: 60%;
   margin: 20px auto;
   padding: 10px;
-  border-radius: 4px;
-  background: ${colors.dark};
+  border-radius: 6px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background: ${colors.dark};
 
   @media screen and (max-width: 992px) {
     width: 90%;
@@ -186,11 +187,17 @@ export const MealplanInfoWrapper = styled.div`
   width: 60%;
   margin: 20px auto;
   padding: 10px;
-  border-radius: 4px;
-  background: ${colors.dark};
+  border-radius: 6px;
   display: flex;
   aling-items: center;
   justify-content: space-evenly;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background: ${colors.dark};
+
+  @media screen and (max-width: 992px) {
+    flex-direction: column;
+    width: 90%;
+  }
 `;
 
 export const MealplanInfoLabels = styled.div`
@@ -199,6 +206,7 @@ export const MealplanInfoLabels = styled.div`
   flex-direction: column;
   aling-items: center;
   justify-content: space-evenly;
+  margin: 0 auto;
 `;
 
 export const MealplanInfoTitle = styled.p`
@@ -207,7 +215,6 @@ export const MealplanInfoTitle = styled.p`
   color: ${colors.white};
   font-size: 20px;
 `;
-
 
 export const MealplanInfoLabel = styled.p`
   text-align: center;
@@ -224,4 +231,9 @@ export const PieChartContainer = styled.div`
   aling-items: center;
   justify-content: space-evenly;
   padding: 20px;
+  margin: 0 auto;
+
+  @media screen and (max-width: 768px) {
+    width: 50%;
+  }
 `;

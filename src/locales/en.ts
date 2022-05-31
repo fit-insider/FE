@@ -132,5 +132,14 @@ export const TRANSLATIONS_EN = {
   'TREE_NUTS': 'Tree nuts',
   'WHEAT': 'Wheat',
 
-  'CREATE_MEALPLAN_LOADING_MESSAGE': 'Your mealplan is now being created...'
+  'CREATE_MEALPLAN_LOADING_MESSAGE': 'Your mealplan is now being created...',
+  'MUST_CHECK_TERMS_AND_CONDITIONS': 'You must agree to the terms and conditions of Fit Insider',
+  'EDIT_USER_INFORMATION': 'Edit user information',
+  'EDIT': 'Edit',
+  'CHANGE_PASSWORD': 'Change password',
+  'CURRENT_PASSWORD': 'Current password',
+  'NEW_PASSWORD': 'New password',
+  'RETYPE_NEW_PASSWORD': 'Retype new password',
+  'OLD_PASSWORD_MUST_MATCH_EXISTING': 'Invalid current passowrd'
+  
 };
