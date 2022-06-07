@@ -76,8 +76,6 @@ const LoginForm = () => {
         onType={handleInputChanges}
       />
       
-      <LoginOptions />
-
       <Button htmlType='submit' onClick={handleLogin} disabled={isLoginButtonDisabled}>{t('LOGIN')}</Button>
 
       <StyledNewMemberText>{t('NEW_MEMBER')}? <StyledLink to='/register'>{t('REGISTER_HERE')}</StyledLink>!</StyledNewMemberText>

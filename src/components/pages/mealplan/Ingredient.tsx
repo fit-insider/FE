@@ -7,7 +7,7 @@ import { removeUnit } from './Utils';
 const Ingredient = ({ ingredient }) => {
   return (
     <StyledIngredient>
-      <Conditional when={ingredient.quantity >= 0.2}>
+      <Conditional when={ingredient.quantity >= 0.1}>
         {Utils.decimalRound(ingredient.quantity)} {Utils.capitalize(removeUnit(ingredient.text))} - {Utils.round(ingredient.weight)} gr
       </Conditional>
     </StyledIngredient>

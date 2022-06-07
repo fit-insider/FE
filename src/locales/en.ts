@@ -140,6 +140,10 @@ export const TRANSLATIONS_EN = {
   'CURRENT_PASSWORD': 'Current password',
   'NEW_PASSWORD': 'New password',
   'RETYPE_NEW_PASSWORD': 'Retype new password',
-  'OLD_PASSWORD_MUST_MATCH_EXISTING': 'Invalid current passowrd'
+  'OLD_PASSWORD_MUST_MATCH_EXISTING': 'Invalid current passowrd',
+
+  'MEALPLAN_REPORTS': 'Mealplan reports',
+  'EXPORT_MEALPLAN_TO_PDF': 'Export mealplan to PDF',
+  'GENERATE_SHOPPING_LIST': 'Generate shopping list'
   
 };

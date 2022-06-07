@@ -8,8 +8,11 @@ const Meal = ({ meal }) => {
   return (
     <MealWrapper>
       <MealTitle>{Utils.capitalize(meal.name)}</MealTitle>
+
       <MealInfo meal={meal}/>
-      <MealImage src={meal.imageURL} alt='' />
+
+      <MealImage src={`data:image/jpeg;base64,${meal.imageData}`} alt='' />
+      
       {
         meal.ingredients.map((ingredient, index) => 
         <Ingredient key={index} ingredient={ingredient}/>

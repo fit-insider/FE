@@ -10,35 +10,19 @@ const MealInfo = ({ meal }) => {
   const { t } = useTranslation();
 
   const cautions = useMemo(() => {
-    const cautions = [];
-    meal.cautions.forEach(caution => {
-      cautions.push(caution.name);
-    });
-    return Utils.capitalize(cautions.join(', '));
+    return Utils.capitalize(meal.cautions.join(', '));
   }, [meal]);
   
   const dishTypes = useMemo(() => {
-    const dishTypes = [];
-    meal.dishTypes.forEach(dishType => {
-      dishTypes.push(dishType.name);
-    });
-    return Utils.capitalize(dishTypes.join(', '));
+    return Utils.capitalize(meal.dishTypes.join(', '));
   }, [meal]);
 
   const cuisineTypes = useMemo(() => {
-    const cuisineTypes = [];
-    meal.cuisineTypes.forEach(cuisineType => {
-      cuisineTypes.push(cuisineType.name);
-    });
-    return Utils.capitalize(cuisineTypes.join(', '));
+    return Utils.capitalize(meal.cuisineTypes.join(', '));
   }, [meal]);
 
   const mealTypes = useMemo(() => {
-    const mealTypes = [];
-    meal.mealTypes.forEach(mealType => {
-      mealTypes.push(mealType.name);
-    });
-    return Utils.capitalize(mealTypes.join(', '));
+    return Utils.capitalize(meal.mealTypes.join(', '));
   }, [meal]);
 
   const KCal = useMemo(() => {

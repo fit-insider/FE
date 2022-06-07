@@ -142,4 +142,7 @@ export const TRANSLATIONS_RO = {
   'RETYPE_NEW_PASSWORD': 'Reintroduce parola nouă',
   'OLD_PASSWORD_MUST_MATCH_EXISTING': 'Invalid current password',
 
+  'MEALPLAN_REPORTS': 'Rapoarte plan alimentar',
+  'EXPORT_MEALPLAN_TO_PDF': 'Exportă planul în PDF',
+  'GENERATE_SHOPPING_LIST': 'Generează lista de cumpărături'
 };

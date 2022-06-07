@@ -9,7 +9,10 @@ const isProcent =(char) => {
 export const removeUnit = (val: string) => {
   const words = val.split(' ');
   let wordPosition = 0;
-  while(isNumber(words[wordPosition].charAt(0)) || isProcent(words[wordPosition].charAt(0))) {
+  while (
+    isNumber(words[wordPosition].charAt(0)) ||
+    isProcent(words[wordPosition].charAt(0))
+    ) {
     wordPosition += 1;
   }
   return words.slice(wordPosition, words.length).join(' ');

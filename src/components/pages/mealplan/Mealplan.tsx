@@ -7,11 +7,15 @@ import { MealplanContext } from '../../context/MealplanContext';
 import Utils from '../../../utils/Utils';
 import { useHistory } from 'react-router-dom';
 import MealplanInfo from './MealplanInfo';
+import MealplanReports from './MealplanReports';
+import Conditional from '../../utils/Conditional';
+import { UserContext } from '../../context/UserContext';
 
 const MealplanPage = () => {
-  const { mealplan } = useContext(MealplanContext);
   const [currentDay, setCurrentDay] = useState(0);
   const history = useHistory();
+  const { mealplan } = useContext(MealplanContext);
+  const { userId } = useContext(UserContext);
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -76,6 +80,10 @@ const MealplanPage = () => {
             prevDay={prevDay}
             nextDay={nextDay}
           />
+
+          <Conditional when={!Utils.isNullOrUndefined(userId)}>
+            <MealplanReports mealplan={mealplan} />
+          </Conditional>
         </>
       }
     </Page>

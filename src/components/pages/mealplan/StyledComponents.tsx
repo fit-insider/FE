@@ -64,7 +64,7 @@ export const DailyMealControls = styled.div`
 
 export const Control = styled.div`
   display: flex;
-  aling-items: center;
+  align-items: center;
   justify-content: center;
   cursor: pointer;
   color: ${colors.white}
@@ -189,7 +189,7 @@ export const MealplanInfoWrapper = styled.div`
   padding: 10px;
   border-radius: 6px;
   display: flex;
-  aling-items: center;
+  align-items: center;
   justify-content: space-evenly;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   background: ${colors.dark};
@@ -204,7 +204,7 @@ export const MealplanInfoLabels = styled.div`
   width: 75%;
   display: flex;
   flex-direction: column;
-  aling-items: center;
+  align-items: center;
   justify-content: space-evenly;
   margin: 0 auto;
 `;
@@ -228,12 +228,42 @@ export const MealplanInfoLabel = styled.p`
 export const PieChartContainer = styled.div`
   width: 35%;
   display: flex;
-  aling-items: center;
+  align-items: center;
   justify-content: space-evenly;
   padding: 20px;
   margin: 0 auto;
 
   @media screen and (max-width: 768px) {
     width: 50%;
+  }
+`;
+
+// Reports
+
+export const MealplanReportsWrapper = styled.div`
+  width: 60%;
+  margin: 20px auto;
+  padding: 10px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background: ${colors.dark};
+
+  @media screen and (max-width: 992px) {
+    width: 90%;
+  }
+`;
+
+export const MealplanReportsOptions = styled.div`
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  
+  @media screen and (max-width: 992px) {
+    flex-direction: column;
   }
 `;
