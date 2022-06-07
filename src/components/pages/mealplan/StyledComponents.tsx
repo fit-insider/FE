@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import Utils from '../../../utils/Utils';
 import colors from '../../shared/theme/Colors';
+import { Link } from 'react-router-dom';
 
 
 // Daily Requirements
 export const DailyRequirementsContainer = styled.div`
-  width: 100%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,6 +15,7 @@ export const DailyRequirementsContainer = styled.div`
 
 export const DailyRequirementsTitle = styled.h1`
   font-size: 20px;
+  color: ${colors.white}
 `;
 
 export const DailyRequirementsWrapper = styled.div`
@@ -190,13 +192,24 @@ export const MealplanInfoWrapper = styled.div`
   border-radius: 6px;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  flex-direction: column;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   background: ${colors.dark};
 
   @media screen and (max-width: 992px) {
     flex-direction: column;
     width: 90%;
+  }
+`;
+
+export const MealplanInformationContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+
+  @media screen and (max-width: 992px) {
+    flex-direction: column;
   }
 `;
 
@@ -237,6 +250,14 @@ export const PieChartContainer = styled.div`
     width: 50%;
   }
 `;
+
+export const MealplanName = styled(Link)`
+  font-size: 20px;
+  color: ${colors.primary};
+  text-align: center;
+  margin: 0 autol
+`;
+
 
 // Reports
 

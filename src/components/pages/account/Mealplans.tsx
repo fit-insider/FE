@@ -1,18 +1,18 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ApiEndpoints } from '../../../configs/api/endpoints';
 import apiService from '../../../services/apiService';
 import { UserContext } from '../../context/UserContext';
-
-import { EditFormWrapper } from './StyledComponents';
+import Mealplan from './Mealplan';
 
 const Mealplans = () => {
   const { userId } = useContext(UserContext);
+  const [mealplans, setMealplans] = useState([]);
 
   useEffect(() => {
     apiService.get<any, any>(ApiEndpoints.getUserMealplans(userId))
     .then(({ data }) => {
-      console.log(data);
+      setMealplans(data);
     })
     .catch((error) => {
       console.log(error);
@@ -20,9 +20,9 @@ const Mealplans = () => {
   }, []);
 
   return (
-    <EditFormWrapper>
-      MEALPLANS
-    </EditFormWrapper>
+    <>
+     {mealplans.map(mealplan => <Mealplan key={mealplan.Id} mealplan={mealplan} />)}
+    </>
   );
 };
 

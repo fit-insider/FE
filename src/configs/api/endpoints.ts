@@ -8,7 +8,7 @@ export const ApiEndpoints = {
   editUser: (id: string) => `/user/edit/${id}`,
   changePassword: (id: string) => `/user/change-password/${id}`,
   createMeal:'/meal/create',
-  getMealplan: (id: string) => `/meal/mealplan/${id}`,
+  getMealplan: (userId: string, mealplanId: string) => `/meal/mealplan/${userId}&${mealplanId}`,
   getUserMealplans: (id: string) => `/meal/mealplans/${id}`,
   exportMealplan: (userId: string, mealplanId: string) => `/meal/export-mealplan/${userId}&${mealplanId}`,
   createShoppingList: (userId: string, mealplanId: string) => `/meal/create-shopping-list/${userId}&${mealplanId}`

@@ -58,7 +58,8 @@ export const mapFormDataToRequest =  (data) : CreateMealRequestModel => {
     waterIntake: 0,
     mealplanType: '',
     excludedFoods: [],
-    mealsCount: 0
+    mealsCount: 0,
+    useCustomMethod: true
   };
 
   for (const [key, value] of Object.entries(data)) {
@@ -98,6 +99,9 @@ export const mapFormDataToRequest =  (data) : CreateMealRequestModel => {
         apiData[value['apiKey']] = getCheckedValues(value);
         break;
       case 'page_10':
+        apiData[value['apiKey']] = getCheckedItemValue(value);
+        break;
+      case 'page_11':
         apiData[value['apiKey']] = getCheckedItemValue(value);
         break;
     }

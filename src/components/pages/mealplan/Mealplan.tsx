@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import Page from '../../layout/page-wrapper/Page';
-import DailyRequirements from './DailyRequirements';
 import { useTranslation } from 'react-i18next';
 import DailyMealComponent from './DailyMealsComponent';
 import { MealplanContext } from '../../context/MealplanContext';
@@ -10,19 +9,37 @@ import MealplanInfo from './MealplanInfo';
 import MealplanReports from './MealplanReports';
 import Conditional from '../../utils/Conditional';
 import { UserContext } from '../../context/UserContext';
+import { useLocation } from 'react-router-dom';
+import apiService from '../../../services/apiService';
+import { ApiEndpoints } from '../../../configs/api/endpoints';
 
 const MealplanPage = () => {
   const [currentDay, setCurrentDay] = useState(0);
   const history = useHistory();
-  const { mealplan } = useContext(MealplanContext);
+  const [mealplan, setMealplan] = useState(null);
+  const { contextMealplan } = useContext(MealplanContext);
   const { userId } = useContext(UserContext);
   const { t } = useTranslation();
+  const search = useLocation().search;
+  const mealplanId = new URLSearchParams(search).get('id');
 
   useEffect(() => {
-    if (Utils.isNullOrUndefined(mealplan)) {
-      history.push('/');
+    if (!Utils.isNullOrUndefined(userId)) {
+      apiService.get<any, any>(ApiEndpoints.getMealplan(userId, mealplanId))
+        .then(({ data }) => {
+          setMealplan(data);
+        })
+        .catch(() => {
+          history.push('/');
+        });
+    } else {
+      if(!Utils.isNullOrUndefined(contextMealplan)) {
+        setMealplan(contextMealplan);
+      } else {
+        history.push('/');
+      }
     }
-  }, [mealplan]);
+  }, [mealplanId])
 
   const prevDay = () => {
     if (currentDay == 0) {
@@ -70,8 +87,7 @@ const MealplanPage = () => {
       {
         !Utils.isNullOrUndefined(mealplan) &&
         <>
-          <MealplanInfo mealplan={mealplan}></MealplanInfo>
-          <DailyRequirements requirements={requirements} />
+          <MealplanInfo mealplan={mealplan} requirements={requirements} />
           <DailyMealComponent
             dayTitle={`${t('DAY')} ${currentDay + 1}`}
             requirements={requirements}

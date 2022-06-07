@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import colors from '../../shared/theme/Colors';
+import { Link } from 'react-router-dom';
 
 export const EditFormWrapper = styled.div`
   padding: 10px;
@@ -16,6 +17,26 @@ export const EditFormWrapper = styled.div`
 export const FormTitle = styled.h1`
   font-size: 20px;
   color: ${colors.white};
+  text-align: center;
+  margin: 0 autol
+`;
+
+// Mealplan
+export const MealplanWrapper = styled.div`
+  width: 100%;
+`;
+
+export const MealplanInfoWrapper = styled.div`
+  border: 1px solid red;
+  display: grid;
+  grid-gap: 20px;
+  width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+`;
+
+export const MealplanName = styled(Link)`
+  font-size: 20px;
+  color: ${colors.primary};
   text-align: center;
   margin: 0 autol
 `;

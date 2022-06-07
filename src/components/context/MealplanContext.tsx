@@ -2,14 +2,14 @@ import React, { createContext, useState } from 'react';
 import { Mealplan } from '../../interfaces/Mealplan';
 
 interface MealplanContextModel {
-  mealplan: Mealplan
+  contextMealplan: Mealplan
   saveMealplan: (value : object) => void
 }
 
-export const MealplanContext = createContext<MealplanContextModel>({ mealplan: null, saveMealplan: null });
+export const MealplanContext = createContext<MealplanContextModel>({ contextMealplan: null, saveMealplan: null });
 
 export const MealplanContextProvider = ({ children }) => {
-  const [mealplan, setMealplan] = useState(JSON.parse(localStorage.getItem('mealplan')));
+  const [contextMealplan, setMealplan] = useState(JSON.parse(localStorage.getItem('mealplan')));
 
   const savePlan = (mealplan) => {
     localStorage.setItem('mealplan', JSON.stringify(mealplan));
@@ -17,7 +17,7 @@ export const MealplanContextProvider = ({ children }) => {
   };
 
   const data = {
-    mealplan: mealplan,
+    contextMealplan: contextMealplan,
     saveMealplan: savePlan
   };
 

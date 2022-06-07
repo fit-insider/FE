@@ -145,6 +145,16 @@ const useMainFormFields = () => {
         { id: 'sixMeals', name: t('SIX'), type: 'checkbox', value: 6 }
       ],
       unique: true
+    },
+    {
+      pageId: 'page_11',
+      apiKey: 'useCustomMethod',
+      pageName: t('WHAT_GENERATOR_METHOD_TO_USE'),
+      fields: [
+        { id: 'custom', name: t('USE_CUSTOM_MEALPLAN_GENERATOR'), type: 'checkbox', value: true },
+        { id: 'googleBased', name: t('USE_GOOGLE_BASED_MEALPLAN_GENERATOR'), type: 'checkbox', value: false }
+      ],
+      unique: true
     }
   ];
 };
