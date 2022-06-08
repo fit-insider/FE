@@ -38,7 +38,7 @@ const Navbar = () => {
     window.addEventListener('resize', closeMobileNavbar, false);
   }, []);
 
-  return (
+return (
     <>
       <Nav>
         <NavGroup>

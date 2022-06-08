@@ -150,5 +150,8 @@ export const TRANSLATIONS_RO = {
   'USE_CUSTOM_MEALPLAN_GENERATOR': 'Generator bazat pe implementarea custom',
   'USE_GOOGLE_BASED_MEALPLAN_GENERATOR': 'Generator bazat implementarea oferită de Google',
 
-  'WAITING_FOR_DATA': 'Se așteaptă date'
+  'WAITING_FOR_DATA': 'Se așteaptă date',
+  
+  'ABOUT_US_P_1': 'Fit Insider este o aplicație web pentru iubitorii de fitness și nutriție, dar și pentru cei care doresc să ducă un stil de viață mai sănătos sau care caută o schimbare în alimentația zilnică.',
+  'ABOUT_US_P_2': 'Fit Insider sprijină utilizatorii și le oferă posibilitatea de a genera planuri de masă personalizate pe baza scopului lor principal, cu posibilitatea de a alege dintr-un set de preferințe alimentare, cum ar fi excluderea unui aliment sau tip de aliment din dieta generată, cu specificarea numărului de mese într-o zi, adaptând dieta la un anumit stil alimentar și multe altele.',
 };

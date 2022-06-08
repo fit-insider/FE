@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import colors from '../../shared/theme/Colors';
-import { Link } from 'react-router-dom';
+
 
 export const EditFormWrapper = styled.div`
   padding: 10px;
@@ -34,9 +34,3 @@ export const MealplanInfoWrapper = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 `;
 
-export const MealplanName = styled(Link)`
-  font-size: 20px;
-  color: ${colors.primary};
-  text-align: center;
-  margin: 0 autol
-`;

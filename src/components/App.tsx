@@ -10,6 +10,8 @@ import MealplanPage from './pages/mealplan/Mealplan';
 import { MealplanContextProvider } from './context/MealplanContext';
 import HomePage from './pages/home/Home';
 import Account from './pages/account/Account';
+import Contact from './pages/contact/Contact';
+import AboutUs from './pages/about-us/AboutUs';
 
 const App = () => (
   <AppSettingsContextProvider>
@@ -21,6 +23,8 @@ const App = () => (
             <UnauthenticatedRoute path='/register' component={Register} exact />
             <AuthenticatedRoute path='/account' component={Account} exact />
             <Route path='/mealplan' component={MealplanPage} exact />
+            <Route path='/contact' component={Contact} exact />
+            <Route path='/about-us' component={AboutUs} exact />
             <Route path='/' component={HomePage} exact />
             <Redirect to='/' />
           </Switch>

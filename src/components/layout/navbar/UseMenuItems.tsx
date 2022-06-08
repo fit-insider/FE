@@ -9,10 +9,6 @@ const useMenuItems = () => {
       path: '/about-us'
     },
     {
-      title: t('SHOP'),
-      path: '/shop'
-    },
-    {
       title: t('CONTACT'),
       path: '/contact'
     }

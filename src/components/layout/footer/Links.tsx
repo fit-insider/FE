@@ -9,8 +9,8 @@ const Links = () => {
     <LinksWrapper>
       <LinksGroup>
         <LinksGroupTitle>{t('OUR_BRAND')}</LinksGroupTitle>
-        <FooterLink to='#'>{t('ABOUT_US')}</FooterLink>
-        <FooterLink to='#'>{t('BECOME_A_MEMBER')}</FooterLink>
+        <FooterLink to='/about-us'>{t('ABOUT_US')}</FooterLink>
+        <FooterLink to='/register'>{t('BECOME_A_MEMBER')}</FooterLink>
         <FooterLink to='#'>{t('NEWS')}</FooterLink>
       </LinksGroup>
 
