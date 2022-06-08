@@ -188,8 +188,10 @@ export const MainForm = () => {
     apiService.post<any, CreateMealRequestModel>(ApiEndpoints.createMeal, apiRequestData)
       .then(({ data }) => {
         setSubmitButtonDisabled(false);
-        saveMealplan(data);
-        history.push('/mealplan');
+        if (Utils.isNullOrUndefined(userId)) {
+          saveMealplan(data);
+        }
+        history.push(`/mealplan?id=${data.id}`);
       })
       .catch((error) => {
         handleApiError(error);

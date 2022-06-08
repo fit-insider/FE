@@ -29,8 +29,9 @@ const MealplanPage = () => {
         .then(({ data }) => {
           setMealplan(data);
         })
-        .catch(() => {
-          history.push('/');
+        .catch((error) => {
+          console.log(error);
+          history.push('/account');
         });
     } else {
       if(!Utils.isNullOrUndefined(contextMealplan)) {
@@ -60,25 +61,29 @@ const MealplanPage = () => {
       name: t('CALORIES'),
       value: mealplan?.calories,
       unit: 'kcal',
-      color: 'kcal'
+      color: 'kcal',
+      key: 'Energy'
     },
     {
       name: t('PROTEIN'),
       value: mealplan?.protein,
       unit: 'gr',
-      color: 'protein'
+      color: 'protein',
+      key: 'Protein'
     },
     {
       name: t('CARBS'),
       value: mealplan?.carb,
       unit: 'gr',
-      color: 'carb'
+      color: 'carb',
+      key: 'Carbs'
     },
     {
       name: t('FAT'),
       value: mealplan?.fat,
       unit: 'gr',
-      color: 'fat'
+      color: 'fat',
+      key: 'Fat'
     }
   ];
 

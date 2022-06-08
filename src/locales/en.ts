@@ -144,6 +144,12 @@ export const TRANSLATIONS_EN = {
 
   'MEALPLAN_REPORTS': 'Mealplan reports',
   'EXPORT_MEALPLAN_TO_PDF': 'Export mealplan to PDF',
-  'GENERATE_SHOPPING_LIST': 'Generate shopping list'
+  'GENERATE_SHOPPING_LIST': 'Generate shopping list',
+
+  'WHAT_GENERATOR_METHOD_TO_USE': 'What generator to use?',
+  'USE_CUSTOM_MEALPLAN_GENERATOR': 'Custom generator',
+  'USE_GOOGLE_BASED_MEALPLAN_GENERATOR': 'Google based generator',
+
+  'WAITING_FOR_DATA': 'Waiting for data...'
   
 };

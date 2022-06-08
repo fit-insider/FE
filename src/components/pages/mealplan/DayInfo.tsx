@@ -38,7 +38,7 @@ const DayInfo = ({ dayName, meals, requirements }) => {
     });
 
     requirements.forEach(nutrient => {
-      switch (nutrient.name) {
+      switch (nutrient.key) {
         case 'Energy':
           error += 0.2 * Math.abs(nutrient.value - kcal)
           break;

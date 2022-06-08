@@ -144,5 +144,11 @@ export const TRANSLATIONS_RO = {
 
   'MEALPLAN_REPORTS': 'Rapoarte plan alimentar',
   'EXPORT_MEALPLAN_TO_PDF': 'Exportă planul în PDF',
-  'GENERATE_SHOPPING_LIST': 'Generează lista de cumpărături'
+  'GENERATE_SHOPPING_LIST': 'Generează lista de cumpărături',
+
+  'WHAT_GENERATOR_METHOD_TO_USE': 'Ce generator să se folosească?',
+  'USE_CUSTOM_MEALPLAN_GENERATOR': 'Generator bazat pe implementarea custom',
+  'USE_GOOGLE_BASED_MEALPLAN_GENERATOR': 'Generator bazat implementarea oferită de Google',
+
+  'WAITING_FOR_DATA': 'Se așteaptă date'
 };
