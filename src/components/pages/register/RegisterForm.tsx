@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ApiEndpoints } from '../../../configs/api/endpoints';
 import apiService from '../../../services/apiService';
@@ -11,12 +11,18 @@ import { UserRegisterModel } from './UserRegisterModel';
 import { useHistory } from 'react-router-dom';
 import { useApiError } from '../../hooks/UseApiError';
 import { FormError } from '../../shared/forms/StylesComponents';
+import Utils from '../../../utils/Utils';
 
-const RegisterOptions = () => {
+const RegisterOptions = ({ errors, onChange }) => {
   const { t } = useTranslation();
   return (
     <RegisterOptionsWrapper>
-      <Checkbox label={t('ACCEPT_TERMS_AND_CONDITIONS')} labelColor='dark' />
+      <Checkbox
+        id='registerOondition'
+        onChange={onChange}
+        error={errors?.conditions}
+        label={t('ACCEPT_TERMS_AND_CONDITIONS')}
+        labelColor='dark' />
       <span />
     </RegisterOptionsWrapper>
   );
@@ -27,6 +33,7 @@ const RegisterForm = () => {
   const [isRegisterButtonDisabled, setIsRegisterButtonDisabled] = useState(false);
   const { t } = useTranslation();
   const { formLevelError, errors, setErrors, handleApiError } = useApiError();
+  const [conditionsChecked, setConditionsChecked] = useState(false);
   const [credentials, setCredentials] = useState({
     firstname: '',
     lastname: '',
@@ -39,8 +46,19 @@ const RegisterForm = () => {
     setErrors({ ...errors, [name]: undefined });
   };
 
+  useEffect(() => {
+    setErrors({ ...errors, ['conditions']: undefined });
+  }, [conditionsChecked])
+
   const handleRegister = () => {
     setIsRegisterButtonDisabled(true);
+
+    if (!conditionsChecked) {
+      setErrors({ ...errors, ['conditions']: t('MUST_CHECK_TERMS_AND_CONDITIONS') });
+      setIsRegisterButtonDisabled(false);
+      return;
+    }
+
     apiService.post<any, UserRegisterModel>(ApiEndpoints.registerUser, credentials)
       .then(() => {
         history.push('/login');
@@ -62,7 +80,8 @@ const RegisterForm = () => {
         placeholder={`${t('FIRST_NAME')}...`}
         labelColor='dark'
         onType={handleInputChanges}
-        error={errors?.firstname}
+        error={!Utils.isNullOrUndefined(errors?.firstname)}
+        errorsList={errors?.firstname}
       />
 
       <TextField
@@ -71,7 +90,8 @@ const RegisterForm = () => {
         placeholder={`${t('LAST_NAME')}...`}
         labelColor='dark'
         onType={handleInputChanges}
-        error={errors?.lastname}
+        error={!Utils.isNullOrUndefined(errors?.lastname)}
+        errorsList={errors?.lastname}
       />
 
       <TextField
@@ -80,19 +100,22 @@ const RegisterForm = () => {
         placeholder={`${t('EMAIL')}...`}
         labelColor='dark'
         onType={handleInputChanges}
-        error={errors?.email}
+        error={!Utils.isNullOrUndefined(errors?.email)}
+        errorsList={errors?.email}
       />
 
       <TextField
         name='password'
+        type='password'
         label={t('PASSWORD')}
         placeholder={`${t('PASSWORD')}...`}
         labelColor='dark'
         onType={handleInputChanges}
-        error={errors?.password}
+        error={!Utils.isNullOrUndefined(errors?.password)}
+        errorsList={errors?.password}
       />
 
-      <RegisterOptions />
+      <RegisterOptions errors={errors} onChange={() => setConditionsChecked(!conditionsChecked)}/>
 
       <Button onClick={handleRegister} disabled={isRegisterButtonDisabled}>{t('REGISTER')}</Button>
 

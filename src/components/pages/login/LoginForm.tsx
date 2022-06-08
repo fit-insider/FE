@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ApiEndpoints } from '../../../configs/api/endpoints';
 import apiService from '../../../services/apiService';
+import Utils from '../../../utils/Utils';
 import { UserContext } from '../../context/UserContext';
 import { useApiError } from '../../hooks/UseApiError';
 import Button from '../../shared/buttons/Button';
@@ -59,21 +60,22 @@ const LoginForm = () => {
         label={t('EMAIL')}
         placeholder={`${t('EMAIL')}...`}
         labelColor='dark'
-        error={errors?.identifier}
+        error={!Utils.isNullOrUndefined(errors)}
+        errorsList={[errors?.identifier]}
         onType={handleInputChanges}
       />
 
       <TextField
         name='password'
+        type='password'
         label={t('PASSWORD')}
         placeholder={`${t('PASSWORD')}...`}
         labelColor='dark'
-        error={errors?.password}
+        error={!Utils.isNullOrUndefined(errors)}
+        errorsList={[errors?.password]}
         onType={handleInputChanges}
       />
       
-      <LoginOptions />
-
       <Button htmlType='submit' onClick={handleLogin} disabled={isLoginButtonDisabled}>{t('LOGIN')}</Button>
 
       <StyledNewMemberText>{t('NEW_MEMBER')}? <StyledLink to='/register'>{t('REGISTER_HERE')}</StyledLink>!</StyledNewMemberText>

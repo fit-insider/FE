@@ -17,6 +17,7 @@ export const RegisterOptionsWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 30px;
 `;
 
 export const StyledLink = styled(Link)`

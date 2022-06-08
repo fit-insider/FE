@@ -1,5 +1,5 @@
-import { CreateMealRequestModel } from "./CreateMealRequestModel";
-import { METRICS } from "./MetricTypes";
+import { CreateMealRequestModel } from './CreateMealRequestModel';
+import { METRICS } from './MetricTypes';
 
 export const MIN_HEIGHT_CM = 54;
 export const MAX_HEIGHT_CM = 272;
@@ -21,7 +21,7 @@ const getCheckedValueId = (values) => {
       return id;
     }
   }
-}
+};
 
 const getCheckedItemValue = (values) => {
   for (const value of Object.values(values)) {
@@ -29,7 +29,17 @@ const getCheckedItemValue = (values) => {
       return value['value'];
     }
   }
-}
+};
+
+const getCheckedValues = (values) => {
+  const checkedValues = [];
+  for (const [key, value] of Object.entries(values)) {
+    if (value['type'] === 'checkbox' && value['checked'] === true) {
+      checkedValues.push(key);
+    }
+  }
+  return checkedValues;
+};
 
 export const mapFormDataToRequest =  (data) : CreateMealRequestModel => {
   const apiData = {
@@ -47,7 +57,9 @@ export const mapFormDataToRequest =  (data) : CreateMealRequestModel => {
     sleep: 0,
     waterIntake: 0,
     mealplanType: '',
+    excludedFoods: [],
     mealsCount: 0,
+    useCustomMethod: true
   };
 
   for (const [key, value] of Object.entries(data)) {
@@ -59,8 +71,8 @@ export const mapFormDataToRequest =  (data) : CreateMealRequestModel => {
         apiData[value['apiKey']] = getCheckedValueId(value);
         break;
       case 'page_2':
-        apiData['heightUnit'] = METRICS[data.metrics.heightUnit]
-        apiData['weightUnit'] = METRICS[data.metrics.weightUnit]
+        apiData['heightUnit'] = METRICS[data.metrics.heightUnit];
+        apiData['weightUnit'] = METRICS[data.metrics.weightUnit];
         apiData['height'] = parseInt(data['page_2'].height.value);
         apiData['weight'] = parseInt(data['page_2'].weight.value);
         apiData['age'] = parseInt(data['page_2'].age.value);
@@ -84,10 +96,16 @@ export const mapFormDataToRequest =  (data) : CreateMealRequestModel => {
         apiData[value['apiKey']] = getCheckedValueId(value);
         break;
       case 'page_9':
+        apiData[value['apiKey']] = getCheckedValues(value);
+        break;
+      case 'page_10':
+        apiData[value['apiKey']] = getCheckedItemValue(value);
+        break;
+      case 'page_11':
         apiData[value['apiKey']] = getCheckedItemValue(value);
         break;
     }
   }
 
   return apiData;
-}
+};

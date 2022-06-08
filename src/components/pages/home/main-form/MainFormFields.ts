@@ -106,12 +106,35 @@ const useMainFormFields = () => {
       pageName: t('WHAT_MEALPLAN_TYPE_YOU_WANT'),
       fields: [
         { id: 'general', name: t('GENERAL'), type: 'checkbox' },
-        { id: 'vegetarian', name: t('VEGETARIAN'), type: 'checkbox' }
+        { id: 'vegetarian', name: t('VEGETARIAN'), type: 'checkbox' },
+        { id: 'vegan', name: t('VEGAN'), type: 'checkbox' }
       ],
       unique: true
     },
     {
       pageId: 'page_9',
+      apiKey: 'excludedFoods',
+      pageName: t('WHAT_DO_YOU_WANT_TO_EXCLUDE_FROM_YOUR_DIET'),
+      fields: [
+        { id: 'nothing', name: t('NOTHING'), type: 'checkbox', single: true, plans: ['general', 'vegetarian', 'vegan'] },
+        { id: 'egg-free', name: t('EGGS'), type: 'checkbox', plans: ['general', 'vegetarian'] },
+        { id: 'fish-free', name: t('FISH'), type: 'checkbox', plans: ['general'] },
+        { id: 'dairy-free', name: t('DAIRY'), type: 'checkbox', plans: ['general'] },
+        { id: 'gluten-free', name: t('GLUTEN'), type: 'checkbox', plans: ['general'] },
+        { id: 'no-oil-added', name: t('OIL'), type: 'checkbox', plans: ['general'] },
+        { id: 'peanut-free', name: t('PEANUT'), type: 'checkbox', plans: ['general'] },
+        { id: 'pork-free', name: t('PORK'), type: 'checkbox', plans: ['general'] },
+        { id: 'red-meat-free', name: t('RED_MEAT'), type: 'checkbox', plans: ['general'] },
+        { id: 'sesame-free', name: t('SESAME'), type: 'checkbox', plans: ['general', 'vegetarian', 'vegan'] },
+        { id: 'shellfish-free', name: t('SHELLFISH'), type: 'checkbox', plans: ['general'] },
+        { id: 'soy-free', name: t('SOY'), type: 'checkbox', plans: ['general'] },
+        { id: 'tree-nut-free', name: t('TREE_NUTS'), type: 'checkbox', plans: ['general'] },
+        { id: 'wheat-free', name: t('WHEAT'), type: 'checkbox', plans: ['general'] }
+      ],
+      unique: false
+    },
+    {
+      pageId: 'page_10',
       apiKey: 'mealsCount',
       pageName: t('HOW_MANY_MEALS_YOU_WANT_A_DAY'),
       fields: [
@@ -120,6 +143,16 @@ const useMainFormFields = () => {
         { id: 'fourMeals', name: t('FOUR'), type: 'checkbox', value: 4 },
         { id: 'fiveMeals', name: t('FIVE'), type: 'checkbox', value: 5 },
         { id: 'sixMeals', name: t('SIX'), type: 'checkbox', value: 6 }
+      ],
+      unique: true
+    },
+    {
+      pageId: 'page_11',
+      apiKey: 'useCustomMethod',
+      pageName: t('WHAT_GENERATOR_METHOD_TO_USE'),
+      fields: [
+        { id: 'custom', name: t('USE_CUSTOM_MEALPLAN_GENERATOR'), type: 'checkbox', value: true },
+        { id: 'googleBased', name: t('USE_GOOGLE_BASED_MEALPLAN_GENERATOR'), type: 'checkbox', value: false }
       ],
       unique: true
     }

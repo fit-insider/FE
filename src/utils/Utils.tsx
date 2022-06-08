@@ -10,11 +10,20 @@ const isEmptyArray = (val : any) => val.length > 0;
 
 function noop() {}
 
+const round = (val : number) => Math.ceil(val);
+
+const decimalRound = (val : number) => (Math.ceil(val / 0.1) * 0.1).toFixed(1);
+
+const capitalize = (val : string) => val.charAt(0).toUpperCase() + val.slice(1);
+
 export default {
   noop,
   isNullOrUndefined,
   isString,
   isEmptyString,
   isArray,
-  isEmptyArray
+  isEmptyArray,
+  round,
+  capitalize,
+  decimalRound
 };

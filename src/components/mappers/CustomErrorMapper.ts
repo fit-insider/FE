@@ -1,6 +1,9 @@
 import CustomErrorCode from '../../enums/CustomErrorCode';
 
 const customErrorMapper = {
+  [CustomErrorCode.InternalServerError]: {
+    translationKey: 'INTERNAL_SERVER_ERROR'
+  },
   [CustomErrorCode.AddUser_Email]: {
     fieldName: 'email',
     translationKey: 'EMAIL_SHOULD_BE_UNIQUE'
@@ -19,21 +22,6 @@ const customErrorMapper = {
   [CustomErrorCode.EditUser_Password]: {
     fieldName: 'oldPassword',
     translationKey: 'OLD_PASSWORD_MUST_MATCH_EXISTING'
-  },
-  [CustomErrorCode.AddAccommodation_Accommodation]: {
-    fieldName: 'name',
-    translationKey: 'ACCOMMODATION_NAME_ALREADY_EXISTS'
-  },
-  [CustomErrorCode.EditReservation_AccommodationAlreadyBooked]: {
-    fieldName: 'reservationDates',
-    translationKey: 'ACCOMMODATION_ALREADY_BOOKED'
-  },
-  [CustomErrorCode.EditAccommodation_Name]: {
-    fieldName: 'name',
-    translationKey: 'ACCOMMODATION_NAME_ALREADY_EXISTS'
-  },
-  [CustomErrorCode.RemoveAccommodation]: {
-    translationKey: 'ACCOMMODATION_CANNOT_BE_REMOVED'
   }
 };
 

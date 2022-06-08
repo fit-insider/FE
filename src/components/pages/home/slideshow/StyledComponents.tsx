@@ -104,7 +104,7 @@ export const StyledTextBox = styled.div<{delay?: number}>`
 `;
 
 export const HeaderText = styled.h1`
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin-bottom: 40px;
 
   @media screen and (max-width: 992px) {
@@ -118,7 +118,7 @@ export const HeaderText = styled.h1`
 `;
 
 export const Text = styled.p`
-  font-size: 2rem;
+  font-size: 1.7rem;
   margin-top: 80px;
 
   @media screen and (max-width: 768px) {

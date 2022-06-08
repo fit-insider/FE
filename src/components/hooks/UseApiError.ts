@@ -8,7 +8,7 @@ export const useApiError = () => {
   const [errors, setErrors] = useState(null);
   const { t } = useTranslation();
 
-  function convertResponseKeys(obj) {
+  function convertResponseKeys(obj) {   
     return Object.keys(obj).reduce((accumulator, key) => {
       accumulator[key.toLowerCase()] = obj[key];
       return accumulator;
@@ -16,6 +16,11 @@ export const useApiError = () => {
   }
 
   const handleApiError = (error: any) => {
+    if(error.response.status === 500) {
+      setFormLevelError(t(customErrorMapper[500].translationKey));
+      return;
+    }
+    
     const errorDetails = customErrorMapper[error.response.data.StatusCode];
     
     if (Utils.isNullOrUndefined(errorDetails)) {

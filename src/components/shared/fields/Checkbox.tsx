@@ -29,10 +29,11 @@ const Checkbox = ({
   labelColor,
   onChange,
   error = '',
-  hidden
+  hidden = false
 }: CheckboxInterface) => {
+
   return (
-    <CheckboxContent hidden>
+    <CheckboxContent hidden={hidden}>
       <StyledCheckboxWrapper>
         <StyledCheckboxInput
           type='checkbox'

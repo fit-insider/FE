@@ -3,7 +3,7 @@ import { PathLike } from 'fs';
 
 export const axiosConfig = {
 	returnRejectPromiseOnError: true,
-	timeout: 30000,
+	timeout: 300000,
 	baseURL: window['env'].API_BASE_URL,
 	headers: {
 		'Cache-Control': 'no-cache, no-store',

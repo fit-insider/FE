@@ -13,5 +13,7 @@ export interface CreateMealRequestModel {
   sleep: number
   waterIntake: number
   mealplanType: string
-  mealsCount: number
+  excludedFoods: Array<string>
+  mealsCount: number,
+  useCustomMethod: boolean
 }
