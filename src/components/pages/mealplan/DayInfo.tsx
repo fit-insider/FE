@@ -40,16 +40,16 @@ const DayInfo = ({ dayName, meals, requirements }) => {
     requirements.forEach(nutrient => {
       switch (nutrient.key) {
         case 'Energy':
-          error += 0.2 * Math.abs(nutrient.value - kcal)
+          error += 0.2 * Math.abs(nutrient.value - kcal);
           break;
         case 'Protein':
-          error +=  Math.abs(nutrient.value - protein)
+          error +=  Math.abs(nutrient.value - protein);
           break;
         case 'Carbs':
-          error +=  Math.abs(nutrient.value - carbs)
+          error +=  Math.abs(nutrient.value - carbs);
           break;
         case 'Fat':
-          error +=  Math.abs(nutrient.value - fat)
+          error +=  Math.abs(nutrient.value - fat);
           break;
       }
     });

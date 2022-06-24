@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Page from '../../layout/page-wrapper/Page';
 import { useTranslation } from 'react-i18next';
 import DailyMealComponent from './DailyMealsComponent';
@@ -12,11 +12,13 @@ import { UserContext } from '../../context/UserContext';
 import { useLocation } from 'react-router-dom';
 import apiService from '../../../services/apiService';
 import { ApiEndpoints } from '../../../configs/api/endpoints';
+import { CustomCircularProgress, LoadingScreenLabel } from '../../shared/overlays/StyledComponents';
 
 const MealplanPage = () => {
   const [currentDay, setCurrentDay] = useState(0);
   const history = useHistory();
   const [mealplan, setMealplan] = useState(null);
+  const [waitForData, setWaitForData] = useState(false);
   const { contextMealplan } = useContext(MealplanContext);
   const { userId } = useContext(UserContext);
   const { t } = useTranslation();
@@ -24,14 +26,17 @@ const MealplanPage = () => {
   const mealplanId = new URLSearchParams(search).get('id');
 
   useEffect(() => {
+    setWaitForData(true);
     if (!Utils.isNullOrUndefined(userId)) {
       apiService.get<any, any>(ApiEndpoints.getMealplan(userId, mealplanId))
         .then(({ data }) => {
+          setWaitForData(false);
           setMealplan(data);
         })
         .catch((error) => {
           console.log(error);
-          history.push('/account');
+          setWaitForData(false);
+          history.push('/');
         });
     } else {
       if(!Utils.isNullOrUndefined(contextMealplan)) {
@@ -40,7 +45,7 @@ const MealplanPage = () => {
         history.push('/');
       }
     }
-  }, [mealplanId])
+  }, [mealplanId]);
 
   const prevDay = () => {
     if (currentDay == 0) {
@@ -89,6 +94,11 @@ const MealplanPage = () => {
 
   return (
     <Page>
+      <Conditional when={waitForData}>
+        <CustomCircularProgress />
+        <LoadingScreenLabel>{t('WAITING_FOR_DATA')}</LoadingScreenLabel>
+      </Conditional>
+
       {
         !Utils.isNullOrUndefined(mealplan) &&
         <>

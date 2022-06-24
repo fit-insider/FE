@@ -14,7 +14,7 @@ module.exports = {
     }
   },
   rules: {
-    'no-console': 1,
+    'no-console': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'object-curly-spacing': [1, 'always'],
     'quotes': [1, 'single', 'avoid-escape'],

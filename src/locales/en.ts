@@ -141,6 +141,8 @@ export const TRANSLATIONS_EN = {
   'NEW_PASSWORD': 'New password',
   'RETYPE_NEW_PASSWORD': 'Retype new password',
   'OLD_PASSWORD_MUST_MATCH_EXISTING': 'Invalid current passowrd',
+  'PASSWORD_CHANGED_SUCCESSFULLY': 'Password changed successfully',
+  'USER_INFO_CHANGED_SUCCESSFULLY': 'User information changed successfully',
 
   'MEALPLAN_REPORTS': 'Mealplan reports',
   'EXPORT_MEALPLAN_TO_PDF': 'Export mealplan to PDF',
@@ -153,7 +155,7 @@ export const TRANSLATIONS_EN = {
   'WAITING_FOR_DATA': 'Waiting for data...',
 
   'ABOUT_US_P_1': 'Fit Insider is a web application for fitness and nutrition lovers, but also for those who wantto lead a healthier lifestyle or who are looking for a change in their daily diet.',
-  'ABOUT_US_P_2': 'Fit Insider supports users and gives them the possibility to generate personalized meal plans based on their primary goal, with the ability to choose from a set of food preferences, such as excluding a food or type of food from the generated diet, specifying the number of meals in a day, adapting the diet to a certain eating style and much more.',
+  'ABOUT_US_P_2': 'Fit Insider supports users and gives them the possibility to generate personalized meal plans based on their primary goal, with the ability to choose from a set of food preferences, such as excluding a food or type of food from the generated diet, specifying the number of meals in a day, adapting the diet to a certain eating style and much more.'
 
   
 };

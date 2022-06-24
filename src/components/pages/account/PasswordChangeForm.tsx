@@ -1,13 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ApiEndpoints } from '../../../configs/api/endpoints';
 import apiService from '../../../services/apiService';
 import Button from '../../shared/buttons/Button';
 import TextField from '../../shared/fields/TextField';
 import CustomForm from '../../shared/forms/CustomForm';
-import { useHistory } from 'react-router-dom';
 import { useApiError } from '../../hooks/UseApiError';
-import { FormError } from '../../shared/forms/StylesComponents';
+import { FormError, SuccessMessage } from '../../shared/forms/StylesComponents';
 import Utils from '../../../utils/Utils';
 import { UserContext } from '../../context/UserContext';
 import { EditFormWrapper, FormTitle } from './StyledComponents';
@@ -18,19 +17,16 @@ const PasswordChangeForm = () => {
   const [changeButtonDisabled, setChangeButtonDisabled] = useState(false);
   const { t } = useTranslation();
   const { formLevelError, errors, setErrors, handleApiError } = useApiError();
+  const [passwordChangeMessage, setPasswordChangeMessage] = useState('');
   const [credentials, setCredentials] = useState({
     OldPassword: '',
     NewPassword: '',
     ConfirmPassword: ''
   });
 
-  useEffect(() => {
-    console.log(errors);
-  },[errors])
-
   const handleInputChanges = ({ target: { name, value } }) => {
     setCredentials({ ...credentials, [name]: value });
-    setErrors({ ...errors, [name]: undefined });
+    setErrors({ ...errors, [String(name).toLocaleLowerCase()]: undefined });
   };
 
   const handleEditUserInfo = () => {
@@ -38,6 +34,7 @@ const PasswordChangeForm = () => {
     apiService.put<any, ChangePasswordModel>(ApiEndpoints.changePassword(userId), credentials)
       .then(() => {
         setChangeButtonDisabled(false);
+        setPasswordChangeMessage(t('PASSWORD_CHANGED_SUCCESSFULLY'));
       })
       .catch((error) => {
         handleApiError(error);
@@ -52,6 +49,7 @@ const PasswordChangeForm = () => {
         <FormTitle>{t('CHANGE_PASSWORD')}</FormTitle>
 
         <FormError>{formLevelError}</FormError>
+        <SuccessMessage>{passwordChangeMessage}</SuccessMessage>
 
         <TextField
           name='OldPassword'
@@ -61,8 +59,8 @@ const PasswordChangeForm = () => {
           type='password'
           value={credentials.OldPassword}
           onType={handleInputChanges}
-          error={!Utils.isNullOrUndefined(errors?.OldPassword)}
-          errorsList={errors?.OldPassword}
+          error={!Utils.isNullOrUndefined(errors?.oldpassword)}
+          errorsList={errors?.oldpassword}
         />
 
         <TextField
@@ -73,8 +71,8 @@ const PasswordChangeForm = () => {
           type='password'
           value={credentials.NewPassword}
           onType={handleInputChanges}
-          error={!Utils.isNullOrUndefined(errors?.NewPassword)}
-          errorsList={errors?.NewPassword}
+          error={!Utils.isNullOrUndefined(errors?.newpassword)}
+          errorsList={errors?.newpassword}
         />
 
         <TextField
@@ -85,8 +83,8 @@ const PasswordChangeForm = () => {
           type='password'
           value={credentials.ConfirmPassword}
           onType={handleInputChanges}
-          error={!Utils.isNullOrUndefined(errors?.ConfirmPassword)}
-          errorsList={errors?.ConfirmPassword}
+          error={!Utils.isNullOrUndefined(errors?.confirmpassword)}
+          errorsList={errors?.confirmpassword}
         />
 
         <Button onClick={handleEditUserInfo} disabled={changeButtonDisabled}>{t('CHANGE_PASSWORD')}</Button>

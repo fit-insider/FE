@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import React, { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ApiEndpoints } from '../../../configs/api/endpoints';

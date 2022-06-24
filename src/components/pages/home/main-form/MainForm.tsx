@@ -20,7 +20,6 @@ import { mapFormDataToRequest } from './Utils';
 import { useHistory } from 'react-router-dom';
 import { MealplanContext } from '../../../context/MealplanContext';
 import LoadingScreen from '../../../shared/overlays/LoadingScreen';
-import { Box, LinearProgress } from '@material-ui/core';
 import ProgressIndicator from './ProgressIndicator';
 
 export const MainForm = () => {
@@ -248,7 +247,6 @@ export const MainForm = () => {
                         />);
                     }
                     if (field.type === 'checkbox' && page.apiKey !== 'excludedFoods') {
-                      console.log(field.image, !Utils.isNullOrUndefined(field.image));
                       return <div key={index}>
                         <Checkbox
                           id={field.id}

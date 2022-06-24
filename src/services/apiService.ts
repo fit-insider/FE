@@ -28,7 +28,7 @@ class ApiService {
           'Content-type': 'application/json'
         },
         responseType: 'blob'
-      },
+      }
     );
   }
 

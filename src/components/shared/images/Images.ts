@@ -23,7 +23,7 @@ const images = {
   female: require('../../../assets/images/female.png'),
   ectomorph: require('../../../assets/images/ectomorph.png'),
   mesomorph: require('../../../assets/images/mesomorph.png'),
-  endomorph: require('../../../assets/images/endomorph.png'),
+  endomorph: require('../../../assets/images/endomorph.png')
 };
 
 export default images;

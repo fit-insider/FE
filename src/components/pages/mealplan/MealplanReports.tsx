@@ -14,7 +14,7 @@ const MealplanReports = ({ mealplan }) => {
     setLoadingScreenActive(true);
     apiService.getFile(ApiEndpoints.exportMealplan(mealplan.userId, mealplan.id))
     .then(({ data } : any) => {
-      const file = new Blob([data], { type: "application/pdf" });
+      const file = new Blob([data], { type: 'application/pdf' });
       const fileURL = URL.createObjectURL(file);
       const pdfWindow = window.open();
       pdfWindow.location.href = fileURL;
@@ -24,13 +24,13 @@ const MealplanReports = ({ mealplan }) => {
       console.log(error);
       setLoadingScreenActive(false);
     });
-  }
+  };
 
   const generateShoppingList = () => {
     setLoadingScreenActive(true);
     apiService.getFile(ApiEndpoints.createShoppingList(mealplan.userId, mealplan.id))
     .then(({ data } : any) => {
-      const file = new Blob([data], { type: "application/pdf" });
+      const file = new Blob([data], { type: 'application/pdf' });
       const fileURL = URL.createObjectURL(file);
       const pdfWindow = window.open();
       pdfWindow.location.href = fileURL;
@@ -40,7 +40,7 @@ const MealplanReports = ({ mealplan }) => {
       console.log(error);
       setLoadingScreenActive(false);
     });
-  }
+  };
 
   return (
     <MealplanReportsWrapper>

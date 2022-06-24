@@ -48,7 +48,7 @@ const RegisterForm = () => {
 
   useEffect(() => {
     setErrors({ ...errors, ['conditions']: undefined });
-  }, [conditionsChecked])
+  }, [conditionsChecked]);
 
   const handleRegister = () => {
     setIsRegisterButtonDisabled(true);

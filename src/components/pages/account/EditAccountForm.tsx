@@ -5,9 +5,8 @@ import apiService from '../../../services/apiService';
 import Button from '../../shared/buttons/Button';
 import TextField from '../../shared/fields/TextField';
 import CustomForm from '../../shared/forms/CustomForm';
-import { useHistory } from 'react-router-dom';
 import { useApiError } from '../../hooks/UseApiError';
-import { FormError } from '../../shared/forms/StylesComponents';
+import { FormError, SuccessMessage } from '../../shared/forms/StylesComponents';
 import Utils from '../../../utils/Utils';
 import { UserEditModel } from './UserEditModel';
 import { UserContext } from '../../context/UserContext';
@@ -18,6 +17,7 @@ const EditInfoForm = () => {
   const [editButtonDisabled, setEditButtonDisabled] = useState(false);
   const { t } = useTranslation();
   const { formLevelError, errors, setErrors, handleApiError } = useApiError();
+  const [userEditSuccessMessage, setUserEditSuccessMessage] = useState('');
   const [credentials, setCredentials] = useState({
     firstname: firstName,
     lastname: lastName
@@ -37,6 +37,7 @@ const EditInfoForm = () => {
         localStorage.setItem('firstName', data.firstName);
         localStorage.setItem('lastName', data.lastName);
         setEditButtonDisabled(false);
+        setUserEditSuccessMessage(t('USER_INFO_CHANGED_SUCCESSFULLY'));
       })
       .catch((error) => {
         handleApiError(error);
@@ -49,6 +50,7 @@ const EditInfoForm = () => {
       <CustomForm width={60}>
         <FormTitle>{t('EDIT_USER_INFORMATION')}</FormTitle>
         <FormError>{formLevelError}</FormError>
+        <SuccessMessage>{userEditSuccessMessage}</SuccessMessage>
 
         <TextField
           name='firstname'

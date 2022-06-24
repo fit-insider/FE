@@ -19,3 +19,8 @@ export const FormError = styled.p`
   color: ${colors.error};
   font-style: italic;
 `;
+
+export const SuccessMessage = styled.p`
+  color: ${colors.success};
+  font-style: italic;
+`;

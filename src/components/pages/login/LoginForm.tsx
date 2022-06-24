@@ -6,23 +6,12 @@ import Utils from '../../../utils/Utils';
 import { UserContext } from '../../context/UserContext';
 import { useApiError } from '../../hooks/UseApiError';
 import Button from '../../shared/buttons/Button';
-import Checkbox from '../../shared/fields/Checkbox';
 import TextField from '../../shared/fields/TextField';
 import CustomForm from '../../shared/forms/CustomForm';
 import { FormError } from '../../shared/forms/StylesComponents';
-import { LoginOptionsWrapper, StyledLink, StyledNewMemberText } from './StyledComponents';
+import { StyledLink, StyledNewMemberText } from './StyledComponents';
 import { UserInfo } from './UserInfo';
 import { UserLoginModel } from './UserLoginModel';
-
-const LoginOptions = () => {
-  const { t } = useTranslation();
-  return (
-    <LoginOptionsWrapper>
-      <Checkbox label={t('KEEP_ME_LOGGED_IN')} labelColor='dark' />
-      <StyledLink to='#'>{t('FORGET_PASSWORD')}?</StyledLink>
-    </LoginOptionsWrapper>
-  );
-};
 
 const LoginForm = () => {
   const { setUserId, setFirstName, setLastName } = useContext(UserContext);
