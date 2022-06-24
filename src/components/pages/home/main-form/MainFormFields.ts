@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import images from '../../../shared/images/Images';
 import { METRICS } from './MetricTypes';
 
 const useMainFormFields = () => {
@@ -10,8 +11,8 @@ const useMainFormFields = () => {
       apiKey: 'gender',
       pageName: t('CHOOSE_GENDER'),
       fields: [
-        { id: 'male', name: t('MALE'), type: 'checkbox' },
-        { id: 'female', name: t('FEMALE'), type: 'checkbox' }
+        { id: 'male', name: t('MALE'), type: 'checkbox', image: images.male },
+        { id: 'female', name: t('FEMALE'), type: 'checkbox', image: images.female }
       ],
       unique: true
     },
@@ -45,9 +46,9 @@ const useMainFormFields = () => {
       apiKey: 'body',
       pageName: t('BODY_TYPE'),
       fields: [
-        { id: 'ectomorph', name: t('ECTOMORPH'), type: 'checkbox' },
-        { id: 'mesomorph', name: t('MESOMORPH'), type: 'checkbox' },
-        { id: 'endomorph', name: t('ENDOMORPH'), type: 'checkbox' }
+        { id: 'ectomorph', name: t('ECTOMORPH'), type: 'checkbox', image: images.ectomorph },
+        { id: 'mesomorph', name: t('MESOMORPH'), type: 'checkbox', image: images.mesomorph },
+        { id: 'endomorph', name: t('ENDOMORPH'), type: 'checkbox', image: images.endomorph }
       ],
       unique: true
     },

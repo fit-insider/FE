@@ -14,12 +14,14 @@ import Conditional from '../../../utils/Conditional';
 import { CreateMealRequestModel } from './CreateMealRequestModel';
 import useMainFormFields from './MainFormFields';
 import { METRICS } from './MetricTypes';
-import { FieldLabel, MainFormPage, PageControls, PageFields, PageTitle } from './StyledComponents';
+import { FieldLabel, MainFormPage, PageControls, PageFields, PageTitle, StyledLabelImage } from './StyledComponents';
 import { useValidation } from './UseValidation';
 import { mapFormDataToRequest } from './Utils';
 import { useHistory } from 'react-router-dom';
 import { MealplanContext } from '../../../context/MealplanContext';
 import LoadingScreen from '../../../shared/overlays/LoadingScreen';
+import { Box, LinearProgress } from '@material-ui/core';
+import ProgressIndicator from './ProgressIndicator';
 
 export const MainForm = () => {
   const pages = useMainFormFields();
@@ -94,7 +96,7 @@ export const MainForm = () => {
       pageFields[fieldId] = { ...pageFields[fieldId], checked: !pageFields[fieldId].checked };
     } else {
 
-      if(!Utils.isNullOrUndefined(pageFields[fieldId].single)) {
+      if (!Utils.isNullOrUndefined(pageFields[fieldId].single)) {
         Object.keys(pageFields).filter(key => key !== fieldId && key !== 'apiKey').forEach(key => {
           pageFields[key] = { ...pageFields[key], checked: false };
         });
@@ -202,10 +204,14 @@ export const MainForm = () => {
 
   return (
     <CustomForm width={50}>
+
+      <span ref={scrollRef} />
+      <br />
+      <ProgressIndicator value={currentPage * 100 / (pages.length - 1)} />
+
       {
         pages.map((page, index) =>
           <Conditional key={page.pageId} when={index === currentPage}>
-            <span ref={scrollRef} />
             <MainFormPage>
               <PageTitle>{page.pageName}</PageTitle>
 
@@ -242,6 +248,7 @@ export const MainForm = () => {
                         />);
                     }
                     if (field.type === 'checkbox' && page.apiKey !== 'excludedFoods') {
+                      console.log(field.image, !Utils.isNullOrUndefined(field.image));
                       return <div key={index}>
                         <Checkbox
                           id={field.id}
@@ -254,8 +261,12 @@ export const MainForm = () => {
                         <FieldLabel
                           htmlFor={field.id}
                           fieldChecked={formFieldsState[page.pageId] && formFieldsState[page.pageId][field.id].checked}
+                          hasImage={!Utils.isNullOrUndefined(field.image)}
                         >
                           {field.name}
+                          <Conditional when={!Utils.isNullOrUndefined(field.image)}>
+                            <StyledLabelImage src={field.image} />
+                          </Conditional>
                         </FieldLabel>
                       </div>;
                     }
@@ -306,7 +317,7 @@ export const MainForm = () => {
           </Conditional>)
       }
 
-    <LoadingScreen active={showLoadingScreen} text={t('CREATE_MEALPLAN_LOADING_MESSAGE')}/>
+      <LoadingScreen active={showLoadingScreen} text={t('CREATE_MEALPLAN_LOADING_MESSAGE')} />
     </CustomForm >
   );
 };

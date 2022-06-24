@@ -8,6 +8,7 @@ export const StyledForm = styled.form<{width?: number}>`
   align-items: center;
   padding: 20px;
   transition: .5s;
+  position: relative;
 
   @media screen and (max-width: 768px) {
     width: 90%;

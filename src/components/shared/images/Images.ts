@@ -19,7 +19,11 @@ const images = {
   facebook_black: require('../../../assets/images/facebook_logo_black.png'),
   instagram_black: require('../../../assets/images/instagram_logo_black.png'),
   aboutUs: require('../../../assets/images/about-us.jpg'),
-
+  male: require('../../../assets/images/male.png'),
+  female: require('../../../assets/images/female.png'),
+  ectomorph: require('../../../assets/images/ectomorph.png'),
+  mesomorph: require('../../../assets/images/mesomorph.png'),
+  endomorph: require('../../../assets/images/endomorph.png'),
 };
 
 export default images;

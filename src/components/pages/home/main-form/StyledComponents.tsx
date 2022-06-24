@@ -1,3 +1,4 @@
+import { Box, LinearProgress } from '@material-ui/core';
 import styled from 'styled-components';
 import colors from '../../../shared/theme/Colors';
 
@@ -5,6 +6,7 @@ export const MainFormPage = styled.div`
   border-radius: 10px;
   width: 100%;
   padding: 20px;
+  padding-top: 60px;
   margin-top: 20px;
   background: ${colors.dark};
   display: flex;
@@ -15,7 +17,7 @@ export const MainFormPage = styled.div`
 export const PageTitle = styled.p`
   color: ${colors.white};
   font-size: 1.1rem;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 `;
 
 export const PageFields = styled.div<{ grid?: boolean }>`
@@ -28,7 +30,7 @@ export const PageFields = styled.div<{ grid?: boolean }>`
   grid-template-columns: ${({ grid }) =>grid? '1fr 1fr' : '1fr'};
 `;
 
-export const FieldLabel = styled.label<{ labelColor?: string, fieldChecked?: boolean, small?: boolean }>`
+export const FieldLabel = styled.label<{ labelColor?: string, fieldChecked?: boolean, small?: boolean, hasImage?: boolean }>`
   margin: 0 auto;
   width: 100%;  
   max-width: 250px;
@@ -37,7 +39,7 @@ export const FieldLabel = styled.label<{ labelColor?: string, fieldChecked?: boo
   font-size: ${({ small }) => small ? '0.8rem' : '1rem'};
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: ${({ hasImage }) => hasImage ? 'space-evenly' : 'center'};
   text-align: center;
   padding: 10px 20px;
   border-radius: 4px;
@@ -53,9 +55,34 @@ export const FieldLabel = styled.label<{ labelColor?: string, fieldChecked?: boo
   user-select: none;
 `;
 
+export const StyledLabelImage = styled.img`
+  width: 100px;
+`;
+
 export const PageControls = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 30px auto;
+`;
+
+export const StyledProgressContainer = styled(Box)`
+  position: absolute;
+  top: 60px;
+  margin: 10px auto;
+`;
+
+export const StyledLinearProgress = styled(LinearProgress)`
+  &.MuiLinearProgress-colorPrimary {
+    background-color:  ${colors.primaryLightLight};
+  }
+
+  & .MuiLinearProgress-barColorPrimary {
+    background-color: ${colors.primary};
+  }
+`;
+
+export const StyledProgressLabel = styled.p`
+  font-size: 14px;
+  color: ${colors.white}
 `;
